@@ -1,0 +1,18 @@
+{
+    "operationName": "BusinessSearch",
+    "variables": {
+        "database": "BUSINESS",
+        "criteria": {
+            "Criteria": {
+                {% for key, value in data.items() %}
+                "{{ key }}" : "{{ value }}"{% if not loop.last %},{% endif %}
+                {% endfor %}
+            },
+            "CustomerDataCriteria": {},
+            "MultiCriteria": {}
+        },
+        "skip": 0,
+        "take": 30
+    },
+    "query": "query BusinessSearch($database: DatabaseEnum!, $criteria: JSONScalar!, $skip: Int!, $take: Int!, $options: JSONScalar, $sort: [SortType]) {\n  search(\n    inquiry: {criteria: $criteria, database: $database, skip: $skip, take: $take, options: $options, sort: $sort}\n  ) {\n    counts {\n      matchCount\n      __typename\n    }\n    edges {\n      node {\n        infogroupId\n        contacts {\n          contactId\n          email\n          firstName\n          gender\n          lastName\n          title\n          __typename\n        }\n        tags {\n          name\n          tagNumber\n          __typename\n        }\n        leadStatus {\n          statusId\n          name\n          __typename\n        }\n        notes {\n          contactId\n          infogroupId\n          noteId\n          note\n          followUp\n          updated\n          createdBy\n          isAnytime\n          detail {\n            phone\n            phoneType\n            phoneExtension\n            emailType\n            email\n            details\n            createdUserDatalynxId\n            completed\n            firstName\n            lastName\n            title\n            __typename\n          }\n          __typename\n        }\n        buildDate\n        values {\n          businessName\n          address\n          city\n          stateProvince\n          postalCode\n          phone\n          firstNameMatch\n          lastNameMatch\n          titleMatch\n          locationEmployeeSizeRange\n          locationSalesVolumeRange\n          primarySic\n          primarySicDescription\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    savedSearch\n    dataVersion\n    __typename\n  }\n}\n"
+}

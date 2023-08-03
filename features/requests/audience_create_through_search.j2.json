@@ -1,0 +1,10 @@
+{
+    "operationName": "AudienceCreateThroughSearch",
+    "variables": {
+        "name": "{{ AtomicRandomString.audience_name }}",
+        "database": "{{ database }}",
+        "savedSearchId": "{{ saved_search_id }}",
+        "dataVersion": "{{ data_version }}"
+    },
+    "query": "mutation AudienceCreateThroughSearch($database: DatabaseEnum!, $name: String!, $savedSearchId: String!, $dataVersion: String!) {\n  audienceCreateThroughSearch(\n    input: {database: $database, savedSearchId: $savedSearchId, name: $name, dataVersion: $dataVersion}\n  ) {\n    audience {\n      ...FAudienceType\n      __typename\n    }\n    errors {\n      ...FAudienceError\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment FAudienceType on AudienceType {\n  leadType\n  createdAt\n  database\n  failReason\n  id\n  name\n  audienceSource\n  progress\n  recordsetId\n  status\n  updatedAt\n  isPublic\n  prospectCount\n  workedCount\n  customerCount\n  __typename\n}\n\nfragment FAudienceError on AudienceError {\n  field\n  code\n  message\n  __typename\n}\n"
+}

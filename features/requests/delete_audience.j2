@@ -1,0 +1,9 @@
+{
+    "operationName": "DeleteAudience",
+    "variables": {
+        "ids": [
+            "{{ audience_card_id }}"
+        ]
+    },
+    "query": "mutation DeleteAudience($ids: [ID!]!) {\n  audienceDelete(ids: $ids) {\n    count\n    errors {\n      ...FAudienceError\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment FAudienceError on AudienceError {\n  field\n  code\n  message\n  __typename\n}\n"
+}

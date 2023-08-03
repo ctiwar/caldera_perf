@@ -1,0 +1,9 @@
+{
+    "operationName": "AudienceListInsightSegment",
+    "variables": {
+        "names": [
+            "{{ data.recordset_id }}"
+        ]
+    },
+    "query": "query AudienceListInsightSegment($ids: [ID]) {\n  audienceList(id_In: $ids) {\n    edges {\n      node {\n        name\n        id\n        histograms {\n          status\n          errorType\n          activityId\n          data {\n            tallyName\n            type\n            title\n            maxItemCriteria\n            totalCount\n            config\n            data {\n              label\n              value\n              percentage\n              hasMaxCount\n              __typename\n            }\n            __typename\n          }\n          __typename\n        }\n        segments {\n          status\n          errorType\n          activityId\n          data {\n            splitRatio\n            data {\n              tallyName\n              data {\n                label\n                value\n                percentage\n                hasMaxCount\n                __typename\n              }\n              __typename\n            }\n            __typename\n          }\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"
+}

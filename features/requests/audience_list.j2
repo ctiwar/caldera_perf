@@ -1,0 +1,8 @@
+{
+    "operationName": "AudienceListHome",
+    "variables": {
+        "name": "",
+        "database_In": ["{{ data.database_one }}", "{{ data.database_two }}"]
+    },
+    "query": "query AudienceListHome($name: String, $ids: [ID], $database_In: [DatabaseEnum]) {\n  audienceList(name_Icontains: $name, id_In: $ids, database_In: $database_In) {\n    edges {\n      node {\n        ...FAudienceType\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment FAudienceType on AudienceType {\n  leadType\n  createdAt\n  database\n  failReason\n  id\n  name\n  audienceSource\n  progress\n  recordsetId\n  status\n  updatedAt\n  isPublic\n  prospectCount\n  workedCount\n  customerCount\n  __typename\n}\n"
+}

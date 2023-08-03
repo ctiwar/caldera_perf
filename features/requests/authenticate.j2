@@ -1,0 +1,7 @@
+{
+    "variables": {
+                "username": "{{ data.username }}",
+                "password": "{{ data.password }}"
+            },
+    "query": "mutation loginUsingPassword($username: Email!, $password: Secret!){loginUsingPassword(username:$username, password:$password){accessToken}}"
+}
