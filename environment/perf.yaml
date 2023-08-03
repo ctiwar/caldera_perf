@@ -1,0 +1,3 @@
+configuration:
+  caldera:
+    host: https://caldera-server.apps-stage.data-axle.com/graphql
